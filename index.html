@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Quiz Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="quiz-app">
+        <div id="start-screen" class="card start-container">
+            <h1>JobPrep Portal</h1>
+            <p>Select a subject to begin a 10-question mock assessment.</p>
+            <div class="subject-grid">
+                <button onclick="startQuiz('currentAffairs')">Current Affairs</button>
+                <button onclick="startQuiz('physics')">Physics</button>
+                <button onclick="startQuiz('chemistry')">Chemistry</button>
+                <button onclick="startQuiz('aptitude')">Aptitude</button>
+            </div>
+        </div>
+
+        <div id="quiz-screen" class="hidden layout-main">
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Question Paper</h3>
+                    <p id="subject-tag">Subject</p>
+                </div>
+                
+                <div id="nav-panel"></div>
+
+                <div class="status-legend">
+                    <div class="legend-item"><span class="dot current"></span> Current</div>
+                    <div class="legend-item"><span class="dot answered"></span> Answered</div>
+                    <div class="legend-item"><span class="dot marked"></span> Marked</div>
+                    <div class="legend-item"><span class="dot unvisited"></span> Unvisited</div>
+                </div>
+            </aside>
+
+            <main class="quiz-content">
+                <div class="quiz-top-bar">
+                    <span class="q-count">Question <strong id="q-num">1</strong> of 10</span>
+                </div>
+                
+                <h2 id="question-text">Loading question...</h2>
+                
+                <div id="options-container"></div>
+                
+                <div class="footer-controls">
+                    <button id="prev-btn" onclick="changeQuestion(currentQuestionIndex - 1)">Previous</button>
+                    <div class="action-btns">
+                        <button id="next-btn" onclick="changeQuestion(currentQuestionIndex + 1)">Next Question</button>
+                        <button id="submit-btn" class="hidden submit-style" onclick="showResults()">Submit Test</button>
+                    </div>
+                </div>
+            </main>
+        </div>
+
+        <div id="result-screen" class="hidden card result-card">
+            <h2>Test Summary</h2>
+            <div class="score-display">
+                <span id="score-text">0</span>/10
+            </div>
+            <p id="feedback-text"></p>
+            <div id="detailed-results"></div>
+            <button class="restart-btn" onclick="location.reload()">Back to Dashboard</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
